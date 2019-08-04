@@ -1,0 +1,17 @@
+properties:
+  owner: canyuda
+
+logging:
+  level:
+    root: INFO
+    com.sixzerosix: TRACE
+
+mybatis:
+  config:
+    path: classpath:mybatis/mybatis-config.xml
+
+database:
+  storage:
+    url: jdbc:mysql://localhost:3306/szs_storage?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: QWEasd!123
