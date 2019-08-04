@@ -30,4 +30,4 @@ target/
 .idea
 *.iml
 # config
-all-storage-svc/src/main/dev*/
+all-storage-svc/src/main/resources/dev*/
