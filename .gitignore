@@ -31,3 +31,6 @@ target/
 *.iml
 # config
 all-storage-svc/src/main/resources/dev*/
+/all-storage-svc/src/main/resources/devniexi
+/all-storage-svc/src/main/resources/devcanyuda
+/all-storage-svc/src/main/resources/devliuqiang
