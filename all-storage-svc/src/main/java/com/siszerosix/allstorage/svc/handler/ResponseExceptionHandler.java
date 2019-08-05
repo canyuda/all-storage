@@ -10,6 +10,7 @@ import com.siszerosix.allstorage.common.response.ErrorResponse;
 import org.apache.commons.httpclient.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -29,7 +30,10 @@ public class ResponseExceptionHandler {
     public Object handException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
 
         BaseResponse baseResponse = new BaseResponse();
-        if (ex instanceof ServletException) {
+        if (ex instanceof MissingServletRequestParameterException) {
+            response.setStatus(HttpStatus.SC_UNPROCESSABLE_ENTITY);
+            logger.error(ex.getMessage(), ex);
+        } else if (ex instanceof ServletException) {
             response.setStatus(HttpStatus.SC_UNPROCESSABLE_ENTITY);
             logger.warn(ex.getMessage(), ex);
         } else if (ex instanceof ResourceNotFoundException) {
@@ -60,6 +64,8 @@ public class ResponseExceptionHandler {
             baseResponse.setHintMessage(errorCodeInterface.getHintMessage());
             response.setStatus(HttpStatus.SC_OK);
             logger.info(ex.getMessage(), ex);
+        } else {
+            logger.error(ex.getMessage(), ex);
         }
         return new ErrorResponse(baseResponse);
     }
