@@ -8,4 +8,5 @@ import com.siszerosix.allstorage.svc.domain.User;
  */
 public interface UserService {
     User findById(Long id);
+    User findByUsername(String username);
 }

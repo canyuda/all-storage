@@ -30,6 +30,7 @@ public class AllStorageApplication extends SpringBootServletInitializer implemen
         return application.sources(AllStorageApplication.class);
     }
 
+
     @Override
     protected WebApplicationContext run(SpringApplication application) {
         return super.run(application);

@@ -7,6 +7,7 @@ package com.siszerosix.allstorage.svc.domain;
 public class User {
     private Long id;
     private String username;
+    private String password;
     private Integer age;
 
     public Long getId() {
@@ -23,6 +24,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getAge() {

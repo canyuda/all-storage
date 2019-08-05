@@ -4,18 +4,27 @@
     <resultMap id="BaseResultMap" type="com.siszerosix.allstorage.svc.domain.User">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="age" property="age" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, username, age
+        SELECT id, username, password, age
     </sql>
 
     <select id="findById" resultMap="BaseResultMap">
-        select
         <include refid="Base_Column_List"/>
         from szs_storage.t_user
         where
         id = #{id,jdbcType=BIGINT}
     </select>
+
+    <select id="findByUsername" resultMap="BaseResultMap">
+        <include refid="Base_Column_List"/>
+        from szs_storage.t_user
+        where
+        username = #{username,jdbcType=VARCHAR}
+    </select>
+
+
 </mapper>
