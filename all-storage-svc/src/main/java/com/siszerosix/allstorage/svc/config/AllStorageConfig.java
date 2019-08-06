@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @data 2019/8/4 1:09
  */
 @Configuration
-public class MyServerConfig {
+public class AllStorageConfig {
 
     @Value("${properties.owner}")
     private String owner;
@@ -18,6 +18,5 @@ public class MyServerConfig {
     public String setOwner() {
         return owner;
     }
-
 
 }

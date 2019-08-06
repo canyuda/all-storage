@@ -1,4 +1,4 @@
-package com.siszerosix.allstorage.svc.config;
+package com.siszerosix.allstorage.svc.security;
 
 import com.siszerosix.allstorage.svc.domain.User;
 import com.siszerosix.allstorage.svc.service.UserService;
