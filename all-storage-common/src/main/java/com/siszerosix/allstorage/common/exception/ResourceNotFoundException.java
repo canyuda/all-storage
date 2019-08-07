@@ -1,6 +1,8 @@
 package com.siszerosix.allstorage.common.exception;
 
-public class ResourceNotFoundException extends BaseRuntionException {
+import com.siszerosix.allstorage.common.exception.base.BaseRuntimeException;
+
+public class ResourceNotFoundException extends BaseRuntimeException {
 
     private static final long serialVersionUID = -8035027450716458707L;
 

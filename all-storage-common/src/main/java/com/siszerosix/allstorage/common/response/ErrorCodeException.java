@@ -1,8 +1,8 @@
 package com.siszerosix.allstorage.common.response;
 
-import com.siszerosix.allstorage.common.exception.BaseRuntionException;
+import com.siszerosix.allstorage.common.exception.base.BaseRuntimeException;
 
-public class ErrorCodeException extends BaseRuntionException {
+public class ErrorCodeException extends BaseRuntimeException {
 
     private static final long serialVersionUID = 9084367480345181688L;
     private ErrorCodeInterface errorCodeInterface;

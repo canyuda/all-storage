@@ -1,0 +1,12 @@
+properties:
+  owner: canyuda
+
+mybatis:
+  config:
+    path: classpath:mybatis/mybatis-config.xml
+
+database:
+  storage:
+    url: jdbc:mysql://localhost:3306/qq_liveplayback?characterEncoding=UTF-8
+    username: root
+    password: 123456

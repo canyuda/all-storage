@@ -1,6 +1,7 @@
 package com.siszerosix.allstorage.common.util;
 
 public class NestedExceptionUtils {
+
     public static String buildMessage(String message, Throwable cause) {
         if (cause != null) {
             StringBuilder sb = new StringBuilder();

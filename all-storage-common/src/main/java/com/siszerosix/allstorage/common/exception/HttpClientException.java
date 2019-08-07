@@ -1,6 +1,8 @@
 package com.siszerosix.allstorage.common.exception;
 
-public class HttpClientException extends BaseRuntionException {
+import com.siszerosix.allstorage.common.exception.base.BaseRuntimeException;
+
+public class HttpClientException extends BaseRuntimeException {
     private Integer status;
     private String httpResult;
 
