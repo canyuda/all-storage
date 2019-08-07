@@ -7,6 +7,6 @@ mybatis:
 
 database:
   storage:
-    url: jdbc:mysql://localhost:3306/qq_liveplayback?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/szs_storage?characterEncoding=UTF-8
     username: root
     password: 123456

@@ -2,6 +2,7 @@ package com.siszerosix.allstorage.svc.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.util.StringUtils;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -82,10 +83,9 @@ public class DataSourceConfig {
     @Bean(name = SQL_SESSION_FACTORY)
     public SqlSessionFactory getSqlSessionFactoryData(@Qualifier(DATA_SOURCE_NAME) DataSource dataSource) {
         try {
-            SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+            MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
             List<Resource> resources = new ArrayList();
             Iterator i$ = XML_PATHS.iterator();
-
             while (i$.hasNext()) {
                 String xmlPath = (String) i$.next();
                 Resource[] t = (new PathMatchingResourcePatternResolver()).getResources(xmlPath);

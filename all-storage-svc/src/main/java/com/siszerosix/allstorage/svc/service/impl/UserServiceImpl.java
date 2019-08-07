@@ -1,5 +1,6 @@
 package com.siszerosix.allstorage.svc.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.siszerosix.allstorage.svc.domain.User;
 import com.siszerosix.allstorage.svc.mapper.UserMapper;
 import com.siszerosix.allstorage.svc.service.UserService;
@@ -19,11 +20,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return userMapper.findById(id);
+        return userMapper.selectById(id);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userMapper.findByUsername(username);
+        QueryWrapper<User> objectQueryWrapper = new QueryWrapper<>();
+        objectQueryWrapper.eq("username", username);
+        return userMapper.selectOne(objectQueryWrapper);
     }
 }
