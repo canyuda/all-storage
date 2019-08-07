@@ -9,3 +9,5 @@ create table szs_storage.t_user
     age int(11) not null
 );
 
+ALTER TABLE `t_user`
+    ADD COLUMN `password` VARCHAR(50) NOT NULL AFTER `username`;
