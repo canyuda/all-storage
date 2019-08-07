@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.siszerosix.allstorage.svc.domain.User;
 import com.siszerosix.allstorage.svc.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("online")
+@Api(value = "okay controller", tags = {"测试 swagger2 功能"})
 public class OkController {
 
     private static final Logger logger = LoggerFactory.getLogger(OkController.class);
@@ -33,6 +36,7 @@ public class OkController {
     private UserService userService;
 
     @RequestMapping(value = "ok", method = RequestMethod.GET)
+    @ApiOperation(value = "返回 owner ok", tags = {"ok"}, notes = "无查询参数")
     public String isOk() {
         logger.info("test");
         return owner + ": ok";

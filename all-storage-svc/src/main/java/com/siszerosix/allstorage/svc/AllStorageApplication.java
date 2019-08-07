@@ -10,10 +10,12 @@ import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.context.WebApplicationContext;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author canyu
  */
+@EnableSwagger2
 @SpringBootApplication(exclude = {
         DispatcherServletAutoConfiguration.class,
         ErrorMvcAutoConfiguration.class,
