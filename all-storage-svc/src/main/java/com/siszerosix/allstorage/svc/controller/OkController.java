@@ -1,5 +1,7 @@
 package com.siszerosix.allstorage.svc.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.siszerosix.allstorage.svc.domain.User;
 import com.siszerosix.allstorage.svc.service.UserService;
 import org.slf4j.Logger;
@@ -39,6 +41,8 @@ public class OkController {
     @RequestMapping(value = "db", method = RequestMethod.GET)
     public String testDb(@RequestParam("id") String id) {
         User user = userService.findById(Long.valueOf(id));
-        return user.getUsername() + user.getAge();
+        Page<User> page = new Page<>(1, 20);
+        IPage<User> userIPage = userService.listByAge(page, 11);
+        return user.getUsername() + user.getAge() + userIPage.getRecords().size();
     }
 }

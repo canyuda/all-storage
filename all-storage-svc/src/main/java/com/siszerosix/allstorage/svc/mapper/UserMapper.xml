@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.siszerosix.allstorage.svc.mapper.UserMapper">
+
+    <sql id="sql_list">
+
+    </sql>
+
+
+    <select id="selectPageVo" resultType="com.siszerosix.allstorage.svc.domain.User">
+        SELECT user.id, user.username, user.password, user.age
+        FROM szs_storage.t_user user
+        WHERE user.age = #{age}
+    </select>
+</mapper>
