@@ -3,17 +3,10 @@ package com.siszerosix.allstorage.svc.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.core.parser.ISqlParser;
-import com.baomidou.mybatisplus.core.parser.SqlInfo;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import com.siszerosix.allstorage.svc.controller.OkController;
-import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -36,16 +29,12 @@ import java.util.List;
 @Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = {"com.siszerosix.allstorage.svc.mapper"},
-        sqlSessionFactoryRef = DataSourceConfig.SQL_SESSION_FACTORY,
-        sqlSessionTemplateRef = DataSourceConfig.SQL_SESSION_TEMPLATE)
+        sqlSessionFactoryRef = DataSourceConfig.SQL_SESSION_FACTORY)
 public class DataSourceConfig {
 
     public final static String SQL_SESSION_FACTORY = "sqlSessionFactory";
-    public final static String SQL_SESSION_TEMPLATE = "sqlSessionTemplate";
     public static final String TX_MANAGER = "transactionManager";
-
     private static final String DATA_SOURCE_NAME = "szs_storage";
-
     private static final String VALIDATION_QUERY = "SELECT 1 FROM DUAL";
     private final static List<String> XML_PATHS = Arrays.asList("classpath:com/siszerosix/allstorage/svc/mapper/*.xml");
 
@@ -78,7 +67,6 @@ public class DataSourceConfig {
         dataSource.setValidationQuery(VALIDATION_QUERY);
         dataSource.setTestOnBorrow(true);
         dataSource.setTimeBetweenLogStatsMillis(60000L);
-//        dataSource.setStatLoggerClassName(DruidDataSourceStatLoggerImpl.class.getCanonicalName());
         return dataSource;
     }
 
@@ -99,7 +87,7 @@ public class DataSourceConfig {
                 resources.addAll(Arrays.asList(t));
             }
             if (!resources.isEmpty()) {
-                bean.setMapperLocations((Resource[]) resources.toArray(new Resource[resources.size()]));
+                bean.setMapperLocations(resources.toArray(new Resource[resources.size()]));
             }
             if (!StringUtils.isEmpty(mybatisConfigPath)) {
                 bean.setConfigLocation((new PathMatchingResourcePatternResolver()).getResource(mybatisConfigPath));
@@ -109,11 +97,6 @@ public class DataSourceConfig {
         } catch (Exception e) {
             throw new RuntimeException("failed to create data sql session", e);
         }
-    }
-
-    @Bean(name = SQL_SESSION_TEMPLATE)
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier(SQL_SESSION_FACTORY) SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
     }
 
     /**

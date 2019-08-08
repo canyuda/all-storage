@@ -31,23 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .anyRequest().permitAll();
-
-//        http.formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/index")
-//                .failureUrl("/login?error")
-//                .permitAll()
-//                .and()
-//                .rememberMe()
-//                .tokenValiditySeconds(1209600)
-//                .key("myKey")
-//                .and()
-//                .logout()
-//                .logoutUrl("/cusstom-logout")
-//                .logoutSuccessUrl("/logout-success")
-//                .permitAll();
-
-
     }
 
     /**
@@ -64,7 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         super.configure(web);
-
     }
 
 
